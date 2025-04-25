@@ -1,0 +1,128 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Helvetica Neue', sans-serif;
+    background-color: #f5f7ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .container {
+    max-width: 600px;
+    width: 90%;
+    background-color: white;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .result-card {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  
+  .left, .right {
+    width: 50%;
+    padding: 2rem;
+  }
+  
+  .left {
+    background: linear-gradient(180deg, #7857ff, #2e2be9);
+    color: white;
+    border-radius: 24px 0 0 24px;
+    text-align: center;
+  }
+  
+  .left h2 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    opacity: 0.85;
+  }
+  
+  .score-circle {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .score {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  .out-of {
+    font-size: 0.9rem;
+    opacity: 0.7;
+  }
+  
+  .left h3 {
+    margin-top: 1.5rem;
+    font-size: 1.5rem;
+  }
+  
+  .left p {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    opacity: 0.85;
+  }
+    .right h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+  }
+  
+  .summary-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
+  
+  .reaction { background-color: #fff6f5; color: #d74b50; }
+  .memory { background-color: #fffbf2; color: #edc43a; }
+  .verbal { background-color: #f2fbfa; color: #3ea090; }
+  .visual { background-color: #f3f3fd; color: #4856c6; }
+  
+  .continue-btn {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #303b59;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .continue-btn:hover {
+    background-color: #1f2a45;
+  }
+    @media (max-width: 640px) {
+    .result-card {
+      flex-direction: column;
+    }
+  
+    .left {
+      border-radius: 24px 24px 0 0;
+    }
+  
+    .right {
+      border-radius: 0 0 24px 24px;
+    }
+  }
+  

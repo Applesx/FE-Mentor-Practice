@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: #111;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-circle {
+            width: 25px;
+            height: 25px;
+            border: 2px solid white;
+            border-radius: 50%;
+        }
+
+        .btn {
+            background-color: #000;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-coral {
+            background-color: #f08080;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: #666;
+            font-size: 18px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 40px 0 80px;
+        }
+
+        .service-card {
+            border-radius: 10px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            min-height: 200px;
+        }
+
+        .service-card.large {
+            grid-column: span 1;
+            grid-row: span 2;
+            min-height: 420px;
+        }
+
+        .service-card h3 {
+            color: white;
+            font-size: 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .graphic-design {
+            background-color: #7b68ee;
+        }
+
+        .ui-ux {
+            background-color: #ffa07a;
+        }
+
+        .apps {
+            background-color: #ffa0a0;
+        }
+
+        .photography {
+            background-color: #66cdaa;
+        }
+
+        .illustrations {
+            background-color: #e57373;
+        }
+
+        .motion-graphics {
+            background-color: #4a1e40;
+        }
+
+        .service-card::before,
+        .service-card::after {
+            content: "";
+            position: absolute;
+            z-index: 1;
+        }
+
+        .graphic-design::before {
+            width: 80px;
+            height: 80px;
+            background-color: #4a1e40;
+            top: 30px;
+            left: 30px;
+        }
+
+        .graphic-design::after {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 0 100px 100px;
+            border-color: transparent transparent white transparent;
+            bottom: 30px;
+            right: 30px;
+        }
+
+        .dots {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+            z-index: 1;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+        }
+
+        .ui-ux .dots {
+            top: 30px;
+            right: 30px;
+        }
+
+        .apps .dots {
+            top: 30px;
+            right: 30px;
+        }
+
+        .photography .dots {
+            bottom: 30px;
+            right: 30px;
+        }
+
+        .illustrations .dots {
+            top: 50%;
+            right: 30px;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .ui-ux .circle {
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            top: 80px;
+            left: 40px;
+        }
+
+        .apps .circle {
+            width: 30px;
+            height: 30px;
+            background-color: #4a1e40;
+            top: 80px;
+            left: 40px;
+        }
+
+        .photography .circle {
+            width: 30px;
+            height: 30px;
+            background-color: #000;
+            top: 40px;
+            left: 40px;
+        }
+
+        .photography .circle:nth-child(2) {
+            width: 30px;
+            height: 30px;
+            background-color: #e57373;
+            top: 40px;
+            left: 80px;
+        }
+
+        .illustrations .circle {
+            width: 30px;
+            height: 30px;
+            background-color: white;
+            top: 40px;
+            right: 80px;
+        }
+
+        .motion-graphics .circle {
+            width: 25px;
+            height: 25px;
+            background-color: #e57373;
+            top: 40px;
+            left: 40px;
+        }
+
+        .motion-graphics .circle:nth-child(2),
+        .motion-graphics .circle:nth-child(3),
+        .motion-graphics .circle:nth-child(4) {
+            width: 25px;
+            height: 25px;
+            background-color: rgba(255, 255, 255, 0.3);
+            top: 40px;
+        }
+
+        .motion-graphics .circle:nth-child(2) {
+            left: 75px;
+        }
+
+        .motion-graphics .circle:nth-child(3) {
+            left: 110px;
+        }
+
+        .motion-graphics .circle:nth-child(4) {
+            left: 145px;
+        }
+
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin: 80px 0;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-image::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #66cdaa;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .about-image .dots {
+            bottom: 20%;
+            left: 10%;
+        }
+
+        .about-image .circle {
+            width: 40px;
+            height: 40px;
+            background-color: #000;
+            top: 20%;
+            left: 20%;
+        }
+
+        .about-image .triangle {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 0 40px 40px;
+            border-color: transparent transparent white transparent;
+            bottom: 20%;
+            right: 20%;
+            z-index: 3;
+        }
+
+        .about-content h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .about-content p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .portfolio {
+            margin: 80px 0;
+        }
+
+        .portfolio h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .portfolio-item {
+            border-radius: 10px;
+            overflow: hidden;
+            height: 200px;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .portfolio-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .nav-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #000;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .cta {
+            background-color: #000;
+            color: white;
+            padding: 60px;
+            border-radius: 10px;
+            margin: 80px 0;
+        }
+
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            max-width: 500px;
+            margin-bottom: 30px;
+        }
+
+        .cta .btn-container {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0 40px;
+        }
+
+        @media (max-width: 992px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .about {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .about-image {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-card.large {
+                min-height: 200px;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta {
+                padding: 40px 20px;
+            }
+            
+            .cta .btn-container {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-circle"></div>
+            </div>
+            <a href="#" class="btn">Free Consultation</a>
+        </header>
+
+        <section class="hero">
+            <h1>Design solutions made easy</h1>
+            <p>With over ten years of experience in various design disciplines, I'm your one-stop shop for your design needs.</p>
+        </section>
+
+        <section class="services-grid">
+            <div class="service-card large graphic-design">
+                <h3>Graphic Design</h3>
+            </div>
+            <div class="service-card ui-ux">
+                <div class="dots">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+                <div class="circle"></div>
+                <h3>UI/UX</h3>
+            </div>
+            <div class="service-card apps">
+                <div class="dots">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+                <div class="circle"></div>
+                <h3>Apps</h3>
+            </div>
+            <div class="service-card photography">
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="dots">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+                <h3>Photography</h3>
+            </div>
+            <div class="service-card illustrations">
+                <div class="circle"></div>
+                <div class="dots">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+                <h3>Illustrations</h3>
+            </div>
+            <div class="service-card motion-graphics">
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <h3>Motion Graphics</h3>
+            </div>
+        </section>
+
+        <section class="about">
+            <div class="about-image">
+                <img src="/placeholder.svg?height=400&width=400" alt="Designer portrait" class="profile-img">
+                <div class="circle"></div>
+                <div class="dots">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+                <div class="triangle"></div>
+            </div>
+            <div class="about-content">
+                <h2>I'm Amy, and I'd love to work on your next project</h2>
+                <p>I love working with others to create beautiful design solutions. I've designed everything from brand illustrations to complete mobile apps. I'm also handy with a camera!</p>
+                <a href="#" class="btn btn-coral">Free Consultation</a>
+            </div>
+        </section>
+
+        <section class="portfolio">
+            <h2>My Work</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="/placeholder.svg?height=200&width=400" alt="Portfolio item 1">
+                </div>
+                <div class="portfolio-item">
+                    <img src="/placeholder.svg?height=200&width=400" alt="Portfolio item 2">
+                </div>
+                <div class="portfolio-item">
+                    <img src="/placeholder.svg?height=200&width=400" alt="Portfolio item 3">
+                </div>
+            </div>
+            <div class="portfolio-nav">
+                <div class="nav-btn">&#8592;</div>
+                <div class="nav-btn">&#8594;</div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <h2>Book a call with me</h2>
+            <p>I'd love to have a chat to see how I can help you. The best first step is for us to discuss your project during a free consultation. Then we can move forward from there.</p>
+            <div class="btn-container">
+                <a href="#" class="btn btn-coral">Free Consultation</a>
+            </div>
+        </section>
+
+        <footer>
+            <div class="logo">
+                <div class="logo-circle"></div>
+            </div>
+            <a href="#" class="btn">Free Consultation</a>
+        </footer>
+    </div>
+</body>
+</html>
